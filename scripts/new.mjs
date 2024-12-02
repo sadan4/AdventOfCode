@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "fs/promises";
+import { copyFile, mkdir, writeFile } from "fs/promises";
 import config from "../.env.json" with {type: "json"};
 import { parseArgs } from "util";
 
@@ -34,3 +34,5 @@ const input = await fetch(new Request(
 
 await mkdir(`./${year}/day${day}`, { recursive: true });
 await writeFile(`./${year}/day${day}/input.txt`, await input.text());
+await copyFile("./scripts/template.ts", `./${year}/day${day}/code.ts`);
+await copyFile("./scripts/input.txt.d.ts", `./${year}/day${day}/input.txt.d.ts`);
