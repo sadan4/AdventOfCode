@@ -14,7 +14,8 @@ const opts = {
     platform: "node",
     format: "cjs",
     outExtension: { ".js": ".cjs" },
-    outdir: getTodaysDir()
+    outdir: getTodaysDir(),
+    logLevel: "debug"
 }
 if (watch) {
     const ctx = await esbuild.context(opts);
